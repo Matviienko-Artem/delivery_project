@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = JSON.parse(localStorage.getItem("localCart"));
+const initialState = JSON.parse(localStorage.getItem('localCart'));
 
 export const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState: initialState || [],
   reducers: {
     addToCart: (state, { payload }) => {
@@ -12,48 +12,51 @@ export const cartSlice = createSlice({
         total: payload.price * payload.amount,
       };
 
-      if (!state.find((item) => item.dish === payload.dish)) {
-        localStorage.setItem("localCart", JSON.stringify([...state, newCartItem]));
+      if (!state.find(item => item.dish === payload.dish)) {
+        localStorage.setItem('localCart', JSON.stringify([...state, newCartItem]));
 
         return [...state, newCartItem];
       } else {
-        state.map((item) => {
+        state.map(item => {
           if (item.dish === payload.dish) {
             item.amount = item.amount + 1;
             item.total = item.price * item.amount;
           }
         });
-        localStorage.setItem("localCart", JSON.stringify(state));
+        localStorage.setItem('localCart', JSON.stringify(state));
       }
     },
 
     incrementAmount: (state, { payload }) => {
-      state.map((item) => {
+      state.map(item => {
         if (item._id === payload._id) {
           item.amount = item.amount + 1;
           item.total = item.price * item.amount;
         }
       });
-      localStorage.setItem("localCart", JSON.stringify(state));
+      localStorage.setItem('localCart', JSON.stringify(state));
     },
 
     decrementAmount: (state, { payload }) => {
       if (payload.amount === 1) {
-        const filtredState = state.filter((item) => item._id !== payload._id);
-        localStorage.setItem("localCart", JSON.stringify(filtredState));
+        const filtredState = state.filter(item => item._id !== payload._id);
+
+        localStorage.setItem('localCart', JSON.stringify(filtredState));
 
         return filtredState;
       }
-      state.map((item) => {
+
+      state.map(item => {
         if (item._id === payload._id) {
           item.amount = item.amount - 1;
           item.total = item.price * item.amount;
         }
       });
-      localStorage.setItem("localCart", JSON.stringify(state));
+      localStorage.setItem('localCart', JSON.stringify(state));
     },
     deleteCart: (state, _) => {
-      localStorage.setItem("localCart", JSON.stringify([]));
+      localStorage.setItem('localCart', JSON.stringify([]));
+
       return (state = []);
     },
   },

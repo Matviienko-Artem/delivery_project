@@ -1,7 +1,9 @@
-import { useDispatch } from "react-redux";
-import { Typography, Button, CardMedia, CardContent, CardActions, Card } from "@mui/material";
-import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
-import { addToCart } from "../store/cartSlice";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Typography, Button, CardMedia, CardContent, CardActions, Card } from '@mui/material';
+import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+
+import { addToCart } from '../store/cartSlice';
 
 function MenuListItem({ menuItem }) {
   const dispatch = useDispatch();
@@ -14,10 +16,10 @@ function MenuListItem({ menuItem }) {
           {menuItem.dish}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {menuItem.price + "$"}
+          {menuItem.price + '$'}
         </Typography>
       </CardContent>
-      <CardActions sx={{ justifyContent: "right" }}>
+      <CardActions sx={{ justifyContent: 'right' }}>
         <Button
           size="small"
           endIcon={<AddShoppingCartOutlinedIcon />}

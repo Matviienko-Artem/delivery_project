@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { postNewOrder } from "../actions/postNewOrder";
-import { Button, Stack, TextField, Box } from "@mui/material";
-import LocalDiningIcon from "@mui/icons-material/LocalDining";
-import { deleteCart } from "../store/cartSlice";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Stack, TextField, Box } from '@mui/material';
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
+
+import { deleteCart } from '../store/cartSlice';
+import { createNewOrder } from '../actions';
 
 function UserForm() {
-  const [inputName, setInputName] = useState("");
-  const [inputEmail, setInputEmail] = useState("");
-  const [inputPhone, setInputPhone] = useState("");
-  const [inputAddress, setInputAddress] = useState("");
+  const [inputName, setInputName] = useState('');
+  const [inputEmail, setInputEmail] = useState('');
+  const [inputPhone, setInputPhone] = useState('');
+  const [inputAddress, setInputAddress] = useState('');
 
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     const totalOrderPrice = cart.reduce((acc, value) => acc + value.total, 0);
@@ -24,17 +25,17 @@ function UserForm() {
       email: inputEmail,
       phone: inputPhone,
       address: inputAddress,
-      cart: cart,
-      totalOrderPrice: totalOrderPrice,
+      cart,
+      totalOrderPrice,
     };
 
-    postNewOrder(userOrder);
+    createNewOrder(userOrder);
 
     dispatch(deleteCart());
-    setInputName("");
-    setInputEmail("");
-    setInputPhone("");
-    setInputAddress("");
+    setInputName('');
+    setInputEmail('');
+    setInputPhone('');
+    setInputAddress('');
   };
 
   return (
@@ -47,7 +48,7 @@ function UserForm() {
           variant="outlined"
           size="small"
           value={inputName}
-          onChange={(e) => setInputName(e.target.value)}
+          onChange={e => setInputName(e.target.value)}
         />
         <TextField
           required
@@ -56,7 +57,7 @@ function UserForm() {
           variant="outlined"
           size="small"
           value={inputEmail}
-          onChange={(e) => setInputEmail(e.target.value)}
+          onChange={e => setInputEmail(e.target.value)}
         />
         <TextField
           required
@@ -65,7 +66,7 @@ function UserForm() {
           variant="outlined"
           size="small"
           value={inputPhone}
-          onChange={(e) => setInputPhone(e.target.value)}
+          onChange={e => setInputPhone(e.target.value)}
         />
         <TextField
           required
@@ -74,9 +75,14 @@ function UserForm() {
           variant="outlined"
           size="small"
           value={inputAddress}
-          onChange={(e) => setInputAddress(e.target.value)}
+          onChange={e => setInputAddress(e.target.value)}
         />
-        <Button variant="outlined" onClick={handleSubmit} startIcon={<LocalDiningIcon />} type="submit">
+        <Button
+          variant="outlined"
+          onClick={handleSubmit}
+          startIcon={<LocalDiningIcon />}
+          type="submit"
+        >
           submit
         </Button>
       </Stack>

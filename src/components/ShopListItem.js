@@ -1,8 +1,9 @@
-import { useSelector } from "react-redux";
-import { ListItemButton, ListItemText } from "@mui/material";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { ListItemButton, ListItemText } from '@mui/material';
 
 function ShopListItem({ shop, current, changeCurrent }) {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector(state => state.cart);
 
   return (
     <ListItemButton

@@ -1,6 +1,8 @@
-import Grid from "@mui/material/Grid";
-import CartList from "../components/CartList";
-import UserForm from "../components/UserForm";
+import React from 'react';
+import Grid from '@mui/material/Grid';
+
+import CartList from '../components/CartList';
+import UserForm from '../components/UserForm';
 
 function CartPage() {
   return (
