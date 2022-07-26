@@ -2,7 +2,7 @@
 
 ### `npm i`
 
-Install all dependencies.\
+Install all dependencies.
 
 Before running this project locally, you need clone this repo [server](https://github.com/Matviienko-Artem/delivery_server) and run it first.
 
