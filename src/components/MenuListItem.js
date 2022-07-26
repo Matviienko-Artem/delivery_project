@@ -8,7 +8,7 @@ function MenuListItem({ menuItem }) {
 
   return (
     <Card sx={{ maxWidth: 500 }} key={menuItem.dish}>
-      <CardMedia component="img" height="140" image={menuItem.img} alt="green iguana" />
+      <CardMedia component="img" height="140" image={menuItem.img} alt="dish image" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {menuItem.dish}
