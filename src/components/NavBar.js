@@ -72,8 +72,6 @@ function NavBar() {
     </Box>
   );
 
-  const container = document.body;
-
   const activeStyle = {
     transition: "all 300ms ease",
     textDecoration: "none",
@@ -127,7 +125,6 @@ function NavBar() {
       <Box component="nav">
         <Drawer
           anchor="right"
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
